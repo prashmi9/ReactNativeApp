@@ -1,0 +1,52 @@
+{
+  "menuitems": [
+    {
+      "id": 1,
+      "shopid": 1,
+      "item": "Burger",
+      "price": 10.0,
+      "discounted": 9.0,
+      "description": "Burger with cheese and bacon"
+    },
+    {
+      "id": 2,
+      "shopid": 1,
+      "item": "Pizza",
+      "price": 15.0,
+      "discounted": 13.0,
+      "description": "Pizza with pepperoni and cheese"
+    },
+    {
+      "id": 3,
+      "shopid": 1,
+      "item": "Pasta",
+      "price": 12.0,
+      "discounted": 10.0,
+      "description": "Pasta with tomato sauce"
+    },
+    {
+      "id": 4,
+      "shopid": 2,
+      "item": "Burger",
+      "price": 10.0,
+      "discounted": 9.0,
+      "description": "Burger with cheese and bacon"
+    },
+    {
+      "id": 5,
+      "shopid": 2,
+      "item": "Pizza",
+      "price": 15.0,
+      "discounted": 13.0,
+      "description": "Pizza with pepperoni and cheese"
+    },
+    {
+      "id": 6,
+      "shopid": 2,
+      "item": "Pasta",
+      "price": 12.0,
+      "discounted": 10.0,
+      "description": "Pasta with tomato sauce"
+    }
+  ]
+}

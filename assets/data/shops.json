@@ -1,0 +1,43 @@
+{
+  "shops": [
+    {
+      "shopname": "shop1",
+      "shopid": "1",
+      "shopaddress": [
+        {
+          "Street": "street1",
+          "City": "city1",
+          "State": "state1",
+          "Zip": "zip1"
+        }
+      ],
+      "reviews": [{ "review1": "review1", "review2": "review2" }]
+    },
+    {
+      "shopname": "shop2",
+      "shopid": "2",
+      "shopaddress": [
+        {
+          "Street": "street2",
+          "City": "city2",
+          "State": "state2",
+          "Zip": "zip2"
+        }
+      ],
+      "reviews": [{ "review1": "review1", "review2": "review2" }]
+    },
+    {
+      "shopname": "shop3",
+      "shopid": "3",
+      "shopaddress": [
+        {
+          "Street": "street3",
+          "City": "city3",
+          "State": "state3",
+          "Zip": "zip3"
+        }
+      ],
+      "reviews": [{ "review1": "review1", "review2": "review2" }]
+    }
+  ]
+}
