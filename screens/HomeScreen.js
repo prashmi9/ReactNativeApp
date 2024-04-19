@@ -13,44 +13,7 @@ import Carousel from "react-native-snap-carousel";
 import ImageView from "../components/ImageView";
 import { getShops } from "../database";
 import * as SQLite from "expo-sqlite";
-const db = SQLite.openDatabase("cornor_shop");
-const myData = [
-  {
-    title: "Appetizers",
-    data: [
-      "Hummus",
-      "Moutabal",
-      "Falafel",
-      "Marinated Olives",
-      "Kofta",
-      "Eggplant Salad",
-    ],
-  },
-  {
-    title: "Main Dishes",
-    data: ["Lentil Burger", "Smoked Salmon", "Kofta Burger", "Turkish Kebab"],
-  },
-  {
-    title: "Sides",
-    data: [
-      "Fries",
-      "Buttered Rice",
-      "Bread Sticks",
-      "Pita Pocket",
-      "Lentil Soup",
-      "Greek Salad",
-      "Rice Pilaf",
-    ],
-  },
-  {
-    title: "Desserts",
-    data: ["Baklava", "Tartufo", "Tiramisu", "Panna Cotta"],
-  },
-];
-const Images = {
-  salad: require("../assets/images/salad.jpg"),
-  winebottles: require("../assets/images/winebottles.jpeg"),
-};
+
 const imageData = [
   {
     image: "winebottles",
@@ -75,14 +38,15 @@ const HomeScreen = ({ navigation }) => {
   const [getShopData, setShopData] = useState([]);
 
   useEffect(() => {
-    // (async () => {
-    //   try {
-    //     const shops = await getShops();
-    //     setShopData(shops);
-    //   } catch (error) {
-    //     console.log("Error in fetching shop data", error);
-    //   }
-    // })();
+    (async () => {
+      try {
+        // const shops = await getShops();
+        // setShopData(shops);
+        // console.log("in home getshops", getShopData);
+      } catch (error) {
+        console.log("Error in fetching shop data", error);
+      }
+    })();
   }, []);
 
   const renderImageItem = ({ item }) => (

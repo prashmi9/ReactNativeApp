@@ -6,7 +6,7 @@ export async function createShopsTable() {
     db.transaction(
       (tx) => {
         tx.executeSql(
-          "create table if not exists Shops (id integer primary key not null, uuid integer, shopname text, address varchar, reviews varchar);"
+          "create table if not exists Shops (id integer primary key not null, uuid integer, shopname text, address text, reviews varchar);"
         );
       },
       reject,
@@ -27,15 +27,39 @@ export async function createMenuTable() {
     );
   });
 }
+//empty shops table
+export async function emptyShopsTable() {
+  return new Promise((resolve, reject) => {
+    db.transaction(
+      (tx) => {
+        tx.executeSql("delete from Shops");
+      },
+      reject,
+      resolve
+    );
+  });
+}
 export async function insertShopDetails(uuid, shopname, address, reviews) {
   return new Promise((resolve, reject) => {
     db.transaction(
       (tx) => {
         tx.executeSql(
-          "insert into menuitems (uuid, shopname,  address, reviews) values (?, ?, ?, ?)",
+          "insert into Shops (uuid, shopname,  address, reviews) values (?, ?, ?, ?)",
           [uuid, shopname, address, reviews]
         );
-        console.log("inserted shop details", uuid, shopname, address, reviews);
+        // console.log("inserted shop details", uuid, shopname, address, reviews);
+      },
+      reject,
+      resolve
+    );
+  });
+}
+//empty menuitems table
+export async function emptyMenuItemsTable() {
+  return new Promise((resolve, reject) => {
+    db.transaction(
+      (tx) => {
+        tx.executeSql("delete from Menuitems");
       },
       reject,
       resolve
@@ -54,8 +78,17 @@ export async function insertMenuItem(
     db.transaction(
       (tx) => {
         tx.executeSql(
-          "insert into menuitems (uuid, shopid, item, description, price, discounted) values (?, ?, ?, ?,?,?)",
-          [uuid, shopid, item, description, price, discounted]
+          "insert into Menuitems ( shopid, item, description, price, discounted) values ( ?, ?, ?,?,?)",
+          [shopid, item, description, price, discounted]
+        );
+        console.log(
+          "inserted menu item",
+          uuid,
+          shopid,
+          item,
+          description,
+          price,
+          discounted
         );
       },
       reject,
@@ -68,7 +101,6 @@ export async function getShops() {
     db.transaction(
       (tx) => {
         tx.executeSql("select * from Shops", [], (_, { rows }) => {
-          console.log("rows", rows._array);
           resolve(rows._array);
         });
       },

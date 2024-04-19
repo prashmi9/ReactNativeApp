@@ -1,5 +1,5 @@
 //import liraries
-import React, { Component } from "react";
+import React from "react";
 import {
   View,
   Text,
@@ -46,11 +46,13 @@ const CartComponent = ({ navigation }) => {
             </View>
             <View>
               <Icon name="checkmark-circle-outline" size={30} color="#eda345" />
-              <Text style={styles.normalText}>4.5</Text>
+              <Text style={styles.normalText}>Verified</Text>
             </View>
           </View>
         </View>
-        {/* <View style={styles.menuListContainer}></View> */}
+        <View style={styles.menuListContainer}>
+          <Text>Tabs</Text>
+        </View>
       </ImageBackground>
     </View>
   );

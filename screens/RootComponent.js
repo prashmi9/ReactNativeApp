@@ -10,25 +10,49 @@ import { Ionicons } from "@expo/vector-icons";
 import CartComponent from "./CartComponent";
 import SearchComponent from "./SearchComponent";
 const shopsData = require("../assets/data/shops.json");
-import { createShopsTable, insertShopDetails, getShops } from "../database";
-import PromoComponent from "./PromoComponent";
+const Menuitems = require("../assets/data/menuitems.json");
+import {
+  createShopsTable,
+  createMenuTable,
+  insertShopDetails,
+  insertMenuItem,
+  emptyShopsTable,
+  emptyMenuItemsTable,
+} from "../database";
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 // create a component
 const RootComponent = () => {
   const [shopData, setShopData] = useState(shopsData);
+  const [menuData, setMenuData] = useState(Menuitems);
+  const [insertedData, setInsertedData] = useState(false);
 
   useEffect(() => {
     (async () => {
       try {
         await createShopsTable();
-
+        await createMenuTable();
+        await emptyShopsTable();
+        await emptyMenuItemsTable();
+        if (insertedData) return;
         shopData.shops.forEach(async (shop) => {
           await insertShopDetails(
             shop.shopid.toString(),
             shop.shopname.toString(),
             shop.shopaddress.toString(),
             shop.reviews.toString()
+          );
+
+          setInsertedData(true);
+        });
+        menuData.menuitems.forEach(async (menu) => {
+          await insertMenuItem(
+            menu.uuid.toString(),
+            menu.shopid.toString(),
+            menu.item.toString(),
+            menu.description.toString(),
+            menu.price.toString(),
+            menu.discounted.toString()
           );
         });
       } catch (error) {
