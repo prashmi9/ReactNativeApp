@@ -1,18 +1,16 @@
-export function getSectionListData(data) {
-  const categories = new Set(data?.map((item) => item.category));
-  const sections = [];
-  categories?.forEach((item) => {
-    if (!item) return;
-    const filtered = data?.filter((element) => element?.category == item);
-    const section = {
-      title: item,
-      data: filtered,
-    };
-    sections.push(section);
-  });
-  console.log(sections);
+export function getSectionListData(shops, menuitems) {
+  const combinedData = shops.map((shop) => {
+    const matchedItems = menuitems.filter((item) => {
+      return item.shopid === shop.uuid;
+    });
 
-  return sections;
+    return {
+      data: matchedItems,
+      ...shop,
+    };
+  });
+  //   console.log("combinedData", combinedData);
+  return combinedData;
 }
 export function useUpdateEffect(effect, dependencies = []) {
   const isInitialMount = useRef(true);

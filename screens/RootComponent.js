@@ -47,12 +47,12 @@ const RootComponent = () => {
         });
         menuData.menuitems.forEach(async (menu) => {
           await insertMenuItem(
-            menu.uuid.toString(),
+            menu.id.toString(),
             menu.shopid.toString(),
             menu.item.toString(),
             menu.description.toString(),
             menu.price.toString(),
-            menu.discounted.toString()
+            menu.discounted
           );
         });
       } catch (error) {

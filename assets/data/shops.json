@@ -1,22 +1,22 @@
 {
   "shops": [
     {
-      "shopname": "shop1",
+      "shopname": "The Corner Shop",
       "shopid": "1",
-      "shopaddress": "Street1, City1, State1, Zip1",
-      "reviews": [{ "review1": "review1", "review2": "review2" }]
+      "shopaddress": "Stanmore, London, HA7",
+      "reviews": "4.5"
     },
     {
-      "shopname": "shop2",
+      "shopname": "The Corner Shop",
       "shopid": "2",
-      "shopaddress": "Street1, City1, State1, Zip1",
-      "reviews": [{ "review1": "review1", "review2": "review2" }]
+      "shopaddress": "Bagawanta bhari, Ngasem",
+      "reviews": "3.5"
     },
     {
-      "shopname": "shop3",
+      "shopname": "The Corner Shop",
       "shopid": "3",
-      "shopaddress": "Street1, City1, State1, Zip1",
-      "reviews": [{ "review1": "review1", "review2": "review2" }]
+      "shopaddress": "Bagawanta Road, Pune",
+      "reviews": "5.0"
     }
   ]
 }

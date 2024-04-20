@@ -6,7 +6,7 @@ export async function createShopsTable() {
     db.transaction(
       (tx) => {
         tx.executeSql(
-          "create table if not exists Shops (id integer primary key not null, uuid integer, shopname text, address text, reviews varchar);"
+          "create table if not exists Shops (id integer primary key not null, uuid integer, shopname text, address text, reviews text);"
         );
       },
       reject,
@@ -80,15 +80,6 @@ export async function insertMenuItem(
         tx.executeSql(
           "insert into Menuitems ( shopid, item, description, price, discounted) values ( ?, ?, ?,?,?)",
           [shopid, item, description, price, discounted]
-        );
-        console.log(
-          "inserted menu item",
-          uuid,
-          shopid,
-          item,
-          description,
-          price,
-          discounted
         );
       },
       reject,

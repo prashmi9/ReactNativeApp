@@ -1,52 +1,76 @@
 {
   "menuitems": [
     {
-      "id": 1,
+      "id": 101,
       "shopid": 1,
       "item": "Burger",
-      "price": 10.0,
-      "discounted": 9.0,
+      "price": "10.00",
+      "discounted": "9.00",
       "description": "Burger with cheese and bacon"
     },
     {
-      "id": 2,
+      "id": 102,
       "shopid": 1,
-      "item": "Pizza",
-      "price": 15.0,
-      "discounted": 13.0,
+      "item": "Pepperoni Pizza",
+      "price": "15.00",
+      "discounted": "13.00",
       "description": "Pizza with pepperoni and cheese"
     },
     {
-      "id": 3,
+      "id": 103,
       "shopid": 1,
       "item": "Pasta",
-      "price": 12.0,
-      "discounted": 10.0,
+      "price": "12.00",
+      "discounted": "10.00",
       "description": "Pasta with tomato sauce"
     },
     {
-      "id": 4,
+      "id": 104,
       "shopid": 2,
-      "item": "Burger",
-      "price": 10.0,
-      "discounted": 9.0,
-      "description": "Burger with cheese and bacon"
+      "item": "Raviolli",
+      "price": "10.00",
+      "discounted": "9.00",
+      "description": "Ravillo Pasta with cheese and tomato sauce"
     },
     {
-      "id": 5,
+      "id": 105,
       "shopid": 2,
-      "item": "Pizza",
-      "price": 15.0,
-      "discounted": 13.0,
-      "description": "Pizza with pepperoni and cheese"
+      "item": "Grilled Salmon ",
+      "price": "15.00",
+      "discounted": "13.00",
+      "description": "Grilled Salmon with lemon sauce"
     },
     {
-      "id": 6,
+      "id": 106,
       "shopid": 2,
-      "item": "Pasta",
-      "price": 12.0,
-      "discounted": 10.0,
-      "description": "Pasta with tomato sauce"
+      "item": "Chiken Nuggets",
+      "price": "12.00",
+      "discounted": "10.00",
+      "description": "Chicken nuggets with ketchup"
+    },
+    {
+      "id": 107,
+      "shopid": 3,
+      "item": "Chicken Burger",
+      "price": "10.00",
+      "discounted": "9.00",
+      "description": "Chicken Burger with cheese and bacon"
+    },
+    {
+      "id": 108,
+      "shopid": 3,
+      "item": "Chicken Wings",
+      "price": "15.00",
+      "discounted": "13.00",
+      "description": "Barbeque Chicken Wings"
+    },
+    {
+      "id": 109,
+      "shopid": 3,
+      "item": "Lasagna",
+      "price": "12.00",
+      "discounted": "10.00",
+      "description": "Pasta Lasagna with cheese and tomato sauce"
     }
   ]
 }
