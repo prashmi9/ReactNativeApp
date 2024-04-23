@@ -11,8 +11,6 @@ import {
 import Icon from "react-native-vector-icons/Ionicons";
 import Carousel from "react-native-snap-carousel";
 import ImageView from "../components/ImageView";
-import { getShops } from "../database";
-import * as SQLite from "expo-sqlite";
 
 const imageData = [
   {
@@ -35,23 +33,10 @@ const imageData = [
 // create a component
 const HomeScreen = ({ navigation }) => {
   const colorShceme = useColorScheme();
-  const [getShopData, setShopData] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-      try {
-        // const shops = await getShops();
-        // setShopData(shops);
-        // console.log("in home getshops", getShopData);
-      } catch (error) {
-        console.log("Error in fetching shop data", error);
-      }
-    })();
-  }, []);
 
   const renderImageItem = ({ item }) => (
     <View style={styles.slide}>
-      <ImageView imageName={item.image} />
+      <ImageView imageName={item.image} css={styles.img} />
       <View style={styles.descSection}>
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.description}>{item.description}</Text>
@@ -190,6 +175,13 @@ const styles = StyleSheet.create({
     textDecorationLine: "line-through",
     color: "grey",
     marginLeft: 10,
+  },
+  img: {
+    width: 350,
+    height: 380,
+    borderRadius: 20,
+    margin: 0,
+    padding: 0,
   },
 });
 

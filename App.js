@@ -1,12 +1,16 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 import React from "react";
 import { StatusBar } from "expo-status-bar";
 import RootComponent from "./screens/RootComponent";
+import { Provider } from "react-redux";
+import store from "./store/cart/Store";
 
 export default function App() {
   return (
     <>
-      <RootComponent />
+      <Provider store={store}>
+        <RootComponent />
+      </Provider>
       <StatusBar style="auto" />
     </>
   );

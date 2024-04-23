@@ -1,5 +1,5 @@
 //import liraries
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   View,
   Text,
@@ -13,6 +13,8 @@ const image = require("../assets/images/restobanner2.jpeg");
 import { getShops, getMenuItems } from "../database";
 import { getSectionListData } from "../components/utils";
 import Icon from "react-native-vector-icons/Ionicons";
+import ImageView from "../components/ImageView";
+import AddToCartButton from "../components/CustomButton";
 // create a component
 const Item = ({ id, name, address, reviews, menuitems }) => (
   <View key={id} style={styles.listContainer}>
@@ -34,10 +36,17 @@ const Item = ({ id, name, address, reviews, menuitems }) => (
     <View style={styles.horizontalLine}></View>
     {menuitems.map((menu) => {
       return (
-        <View>
-          <Text style={styles.meniItem}>{menu.item}</Text>
-          <Text style={styles.menuPrice}>${menu.price}</Text>
-          <Text style={styles.discountedPrice}>${menu.discounted}</Text>
+        <View style={styles.cardContainer}>
+          <ImageView imageName={menu.imagename} css={styles.cardImg} />
+
+          <View style={styles.descContainer}>
+            <Text style={styles.meniItem}>{menu.item}</Text>
+            <View style={styles.priceContainer}>
+              <Text style={styles.menuPrice}>${menu.price}</Text>
+              <Text style={styles.discountedPrice}>${menu.discounted}</Text>
+            </View>
+            <AddToCartButton />
+          </View>
         </View>
       );
     })}
@@ -102,6 +111,23 @@ const SearchComponent = ({ navigation }) => {
 
 // define your styles
 const styles = StyleSheet.create({
+  cardImg: {
+    width: 80,
+    height: 80,
+    borderRadius: 10,
+    borderColor: "#cccccc",
+    borderWidth: 1,
+  },
+  descContainer: {
+    marginLeft: 20,
+    width: "70%",
+  },
+  cardContainer: {
+    flexDirection: "row",
+    justifyContent: "start",
+    marginBottom: 10,
+    textAlign: "left",
+  },
   horizontalLine: {
     borderBottomColor: "#efeff2",
     borderBottomWidth: 4,
@@ -115,7 +141,7 @@ const styles = StyleSheet.create({
     width: "15%",
   },
   ratingStar: {
-    fontSize: 20,
+    fontSize: 18,
     color: "#000000",
   },
   titleContainer: {
@@ -124,23 +150,26 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   meniItem: {
-    fontSize: 25,
-
+    fontSize: 15,
     color: "#3e4562",
     textAlign: "left",
   },
+  priceContainer: {
+    flexDirection: "row",
+  },
   menuPrice: {
-    fontSize: 25,
+    fontSize: 15,
     fontWeight: "bold",
     color: "#7e7e7e",
     textAlign: "left",
   },
   discountedPrice: {
-    fontSize: 25,
+    fontSize: 15,
     fontWeight: "bold",
     color: "#cacaca",
     textAlign: "left",
     textDecorationLine: "line-through",
+    marginLeft: 10,
   },
   listContainer: {
     padding: 10,
@@ -149,13 +178,13 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   title: {
-    fontSize: 30,
+    fontSize: 25,
     fontWeight: "bold",
     color: "#3e4562",
     textAlign: "left",
   },
   address: {
-    fontSize: 20,
+    fontSize: 18,
     color: "#6f6f6f",
     textAlign: "left",
   },
@@ -168,19 +197,13 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
   },
   container: {
-    width: "90%",
+    width: "95%",
     marginTop: 20,
   },
   topBar: {
     width: "100%",
     padding: 0,
     marginBottom: 70,
-  },
-  heading: {
-    fontSize: 30,
-    fontWeight: "bold",
-    color: "#000000",
-    textAlign: "left",
   },
   img: {
     width: "100%",

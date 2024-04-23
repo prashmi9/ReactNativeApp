@@ -19,8 +19,22 @@ export async function createMenuTable() {
     db.transaction(
       (tx) => {
         tx.executeSql(
-          "create table if not exists Menuitems (id integer primary key not null, shopid integer, item text, description text, price text, discounted);"
+          "create table if not exists Menuitems (id integer primary key not null, shopid integer, item text, imagename text, description text, price text, discounted text);"
         );
+      },
+      reject,
+      resolve
+    );
+  });
+}
+//show table columns
+export async function showTableColumns() {
+  return new Promise((resolve, reject) => {
+    db.transaction(
+      (tx) => {
+        tx.executeSql("PRAGMA table_info(Menuitems);", [], (_, { rows }) => {
+          console.log("table columns", rows._array);
+        });
       },
       reject,
       resolve
@@ -70,6 +84,7 @@ export async function insertMenuItem(
   uuid,
   shopid,
   item,
+  imagename,
   description,
   price,
   discounted
@@ -78,8 +93,8 @@ export async function insertMenuItem(
     db.transaction(
       (tx) => {
         tx.executeSql(
-          "insert into Menuitems ( shopid, item, description, price, discounted) values ( ?, ?, ?,?,?)",
-          [shopid, item, description, price, discounted]
+          "insert into Menuitems (id, shopid, item, imagename, description, price, discounted) values (?, ?, ?, ?, ?, ?, ?)",
+          [uuid, shopid, item, imagename, description, price, discounted]
         );
       },
       reject,
@@ -106,7 +121,6 @@ export async function getMenuItems() {
   return new Promise((resolve) => {
     db.transaction((tx) => {
       tx.executeSql("select * from Menuitems", [], (_, { rows }) => {
-        // console.log("rows", rows._array);
         resolve(rows._array);
       });
     });

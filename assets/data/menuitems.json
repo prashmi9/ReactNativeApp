@@ -2,30 +2,34 @@
   "menuitems": [
     {
       "id": 101,
+      "imagename": "winebottles",
       "shopid": 1,
-      "item": "Burger",
-      "price": "10.00",
-      "discounted": "9.00",
-      "description": "Burger with cheese and bacon"
+      "item": "Finca Las Moras",
+      "price": "18.00",
+      "discounted": "22.50",
+      "description": "Dark burgundy-colored wine with vanilla and cinnamon aromas"
     },
     {
       "id": 102,
+      "imagename": "salad",
       "shopid": 1,
-      "item": "Pepperoni Pizza",
+      "item": "Fruit Salad",
       "price": "15.00",
       "discounted": "13.00",
-      "description": "Pizza with pepperoni and cheese"
+      "description": "Fresh fruit salad with honey and yogurt dressing"
     },
     {
       "id": 103,
+      "imagename": "bakso",
       "shopid": 1,
-      "item": "Pasta",
+      "item": "Bakso Jumbo Regular",
       "price": "12.00",
       "discounted": "10.00",
-      "description": "Pasta with tomato sauce"
+      "description": "Indonesian meatball soup with noodles and vegetables"
     },
     {
       "id": 104,
+      "imagename": "raviolli",
       "shopid": 2,
       "item": "Raviolli",
       "price": "10.00",
@@ -34,6 +38,7 @@
     },
     {
       "id": 105,
+      "imagename": "salmon",
       "shopid": 2,
       "item": "Grilled Salmon ",
       "price": "15.00",
@@ -42,6 +47,7 @@
     },
     {
       "id": 106,
+      "imagename": "chikennuggets",
       "shopid": 2,
       "item": "Chiken Nuggets",
       "price": "12.00",
@@ -50,6 +56,7 @@
     },
     {
       "id": 107,
+      "imagename": "chickenburger",
       "shopid": 3,
       "item": "Chicken Burger",
       "price": "10.00",
@@ -58,6 +65,7 @@
     },
     {
       "id": 108,
+      "imagename": "chickenwings",
       "shopid": 3,
       "item": "Chicken Wings",
       "price": "15.00",
@@ -66,6 +74,7 @@
     },
     {
       "id": 109,
+      "imagename": "lasagna",
       "shopid": 3,
       "item": "Lasagna",
       "price": "12.00",

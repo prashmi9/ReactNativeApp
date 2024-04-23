@@ -1,9 +1,8 @@
 //import liraries
-import React, { useEffect, useState } from "react";
-import { StyleSheet } from "react-native";
+import React, { useEffect, useState, useContext } from "react";
+import { StyleSheet, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createStackNavigator } from "@react-navigation/stack";
 import WelcomeScreen from "./WelcomeScreen";
 import HomeScreen from "./HomeScreen";
 import { Ionicons } from "@expo/vector-icons";
@@ -18,15 +17,16 @@ import {
   insertMenuItem,
   emptyShopsTable,
   emptyMenuItemsTable,
+  showTableColumns,
 } from "../database";
+import { useSelector } from "react-redux";
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
 // create a component
 const RootComponent = () => {
+  const cartItemsCount = useSelector((state) => state.cart.cartItemsCount);
   const [shopData, setShopData] = useState(shopsData);
   const [menuData, setMenuData] = useState(Menuitems);
   const [insertedData, setInsertedData] = useState(false);
-
   useEffect(() => {
     (async () => {
       try {
@@ -34,6 +34,7 @@ const RootComponent = () => {
         await createMenuTable();
         await emptyShopsTable();
         await emptyMenuItemsTable();
+        // await showTableColumns();
         if (insertedData) return;
         shopData.shops.forEach(async (shop) => {
           await insertShopDetails(
@@ -50,6 +51,7 @@ const RootComponent = () => {
             menu.id.toString(),
             menu.shopid.toString(),
             menu.item.toString(),
+            menu.imagename.toString(),
             menu.description.toString(),
             menu.price.toString(),
             menu.discounted
@@ -78,7 +80,14 @@ const RootComponent = () => {
               } else if (route.name === "Welcome") {
                 iconName = focused ? "person" : "person-outline";
               }
-              return <Ionicons name={iconName} size={35} color={color} />;
+              return (
+                <>
+                  <Ionicons name={iconName} size={35} color={color} />
+                  {cartItemsCount > 0 && route.name === "Cart" && (
+                    <Text style={{ color: "red" }}>{cartItemsCount}</Text>
+                  )}
+                </>
+              );
             },
             tabBarActiveTintColor: "tomato",
             tabBarInactiveTintColor: "gray",
@@ -96,7 +105,6 @@ const RootComponent = () => {
     </>
   );
 };
-
 // define your styles
 const styles = StyleSheet.create({
   container: {
