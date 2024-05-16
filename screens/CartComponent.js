@@ -6,11 +6,19 @@ import {
   StyleSheet,
   ImageBackground,
   Pressable,
+  FlatList,
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+import { useSelector } from "react-redux";
 const image = require("../assets/images/restobanner2.jpeg");
-
+const Item = ({ price, name }) => (
+  <View style={styles.listContainer}>
+    <Text style={styles.title}>{name}</Text>
+    <Text style={styles.title}>{price}</Text>
+  </View>
+);
 const CartComponent = ({ navigation }) => {
+  const product = useSelector((state) => state.cart.productToCart);
   return (
     <View>
       <ImageBackground source={image} resizeMode="cover" style={styles.img}>
@@ -51,7 +59,14 @@ const CartComponent = ({ navigation }) => {
           </View>
         </View>
         <View style={styles.menuListContainer}>
-          <Text>Tabs</Text>
+          <Text>Items added to Cart</Text>
+
+          <FlatList
+            data={product}
+            renderItem={({ item }) => (
+              <Item price={item.price} name={item.item} />
+            )}
+          />
         </View>
       </ImageBackground>
     </View>

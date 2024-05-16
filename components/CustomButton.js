@@ -2,9 +2,16 @@
 import React, { useState, useContext } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useDispatch } from "react-redux";
-import { addToCart, removeFromCart } from "../store/cart/cartSlice";
-const AddToCartButton = () => {
+import {
+  addToCart,
+  removeFromCart,
+  addProductToCart,
+  removeProduct,
+} from "../store/cart/cartSlice";
+import { useSelector } from "react-redux";
+const AddToCartButton = (menuitem) => {
   const [count, setCount] = useState(0);
+
   const dispatch = useDispatch();
   const increment = () => {
     setCount(count + 1);
@@ -15,10 +22,12 @@ const AddToCartButton = () => {
   const addQuantity = () => {
     increment();
     dispatch(addToCart());
+    dispatch(addProductToCart({ product: menuitem }));
   };
   const removeQuantity = () => {
     decrement();
     dispatch(removeFromCart());
+    dispatch(removeProduct({ product: menuitem }));
   };
   return (
     <View style={styles.container}>

@@ -34,9 +34,9 @@ const Item = ({ id, name, address, reviews, menuitems }) => (
       </View>
     </View>
     <View style={styles.horizontalLine}></View>
-    {menuitems.map((menu) => {
+    {menuitems.map((menu, k) => {
       return (
-        <View style={styles.cardContainer}>
+        <View key={k} style={styles.cardContainer}>
           <ImageView imageName={menu.imagename} css={styles.cardImg} />
 
           <View style={styles.descContainer}>
@@ -45,14 +45,18 @@ const Item = ({ id, name, address, reviews, menuitems }) => (
               <Text style={styles.menuPrice}>${menu.price}</Text>
               <Text style={styles.discountedPrice}>${menu.discounted}</Text>
             </View>
-            <AddToCartButton />
+            <AddToCartButton
+              id={id + "" + k}
+              item={menu.item}
+              price={menu.price}
+            />
           </View>
         </View>
       );
     })}
   </View>
 );
-const SearchComponent = ({ navigation }) => {
+const SearchComponent = ({}) => {
   const [shopData, setShopData] = useState([]);
   const [searchText, setSearchText] = useState("");
   useEffect(() => {
@@ -73,6 +77,9 @@ const SearchComponent = ({ navigation }) => {
         console.log("Error in Search fetching shop data", error);
       }
     })();
+    return () => {
+      console.log("Unmounting SearchComponent");
+    };
   }, []);
 
   return (
