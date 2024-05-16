@@ -1,5 +1,5 @@
 //Plus button counter and minus button
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useDispatch } from "react-redux";
 import {
@@ -8,10 +8,9 @@ import {
   addProductToCart,
   removeProduct,
 } from "../store/cart/cartSlice";
-import { useSelector } from "react-redux";
+
 const AddToCartButton = (menuitem) => {
   const [count, setCount] = useState(0);
-
   const dispatch = useDispatch();
   const increment = () => {
     setCount(count + 1);
