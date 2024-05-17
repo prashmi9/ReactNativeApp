@@ -10,6 +10,7 @@ import CartComponent from "./CartComponent";
 import SearchComponent from "./SearchComponent";
 const shopsData = require("../assets/data/shops.json");
 const Menuitems = require("../assets/data/menuitems.json");
+import commonStyles from "../styles/style";
 import {
   createShopsTable,
   createMenuTable,
@@ -67,7 +68,7 @@ const RootComponent = () => {
       <NavigationContainer>
         <Tab.Navigator
           screenOptions={({ route }) => ({
-            tabBarStyle: styles.nav,
+            tabBarStyle: commonStyles.nav,
             tabBarIcon: ({ focused, color, size }) => {
               let iconName;
 
@@ -92,7 +93,7 @@ const RootComponent = () => {
             tabBarActiveTintColor: "tomato",
             tabBarInactiveTintColor: "gray",
             tabBarAllowFontScaling: true,
-            tabBarLabelStyle: styles.navText,
+            tabBarLabelStyle: commonStyles.navText,
           })}
         >
           <Tab.Screen name="Home" component={HomeScreen} />
@@ -105,32 +106,6 @@ const RootComponent = () => {
     </>
   );
 };
-// define your styles
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: "flex-end",
-    alignItems: "center",
-    backgroundColor: "#2c3e50",
-  },
-  nav: {
-    height: 80,
-    fontSize: 20,
-    borderStyle: "solid",
-    borderColor: "black",
-    borderWidth: 1,
-  },
-  navText: { fontSize: 15, lineHeight: 15, marginBottom: 5 },
-  home: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  welcome: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
 
 //make this component available to the app
 export default RootComponent;

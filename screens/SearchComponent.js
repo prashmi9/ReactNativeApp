@@ -1,11 +1,9 @@
-//import liraries
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
   StyleSheet,
   ImageBackground,
-  SectionList,
   FlatList,
   TextInput,
 } from "react-native";
@@ -15,35 +13,38 @@ import { getSectionListData } from "../components/utils";
 import Icon from "react-native-vector-icons/Ionicons";
 import ImageView from "../components/ImageView";
 import AddToCartButton from "../components/CustomButton";
-// create a component
+import commonStyles from "../styles/style";
+
 const Item = ({ id, name, address, reviews, menuitems }) => (
-  <View key={id} style={styles.listContainer}>
-    <View style={styles.titleContainer}>
+  <View key={id} style={commonStyles.listContainer}>
+    <View style={commonStyles.titleContainer}>
       <View>
-        <Text style={styles.title}>{name}</Text>
-        <Text style={styles.address}>{address}</Text>
+        <Text style={commonStyles.title}>{name}</Text>
+        <Text style={commonStyles.address}>{address}</Text>
       </View>
-      <View style={styles.ratingContainer}>
+      <View style={commonStyles.ratingContainer}>
         <Icon
           name="star-outline"
           size={25}
           color="#eda345"
-          style={styles.iconStar}
+          style={commonStyles.iconStar}
         />
-        <Text style={styles.ratingStar}>{reviews}</Text>
+        <Text style={commonStyles.ratingStar}>{reviews}</Text>
       </View>
     </View>
-    <View style={styles.horizontalLine}></View>
+    <View style={commonStyles.horizontalLine}></View>
     {menuitems.map((menu, k) => {
       return (
-        <View key={k} style={styles.cardContainer}>
-          <ImageView imageName={menu.imagename} css={styles.cardImg} />
+        <View key={k} style={commonStyles.cardContainer}>
+          <ImageView imageName={menu.imagename} css={commonStyles.cardImg} />
 
-          <View style={styles.descContainer}>
-            <Text style={styles.meniItem}>{menu.item}</Text>
-            <View style={styles.priceContainer}>
-              <Text style={styles.menuPrice}>${menu.price}</Text>
-              <Text style={styles.discountedPrice}>${menu.discounted}</Text>
+          <View style={commonStyles.descContainer}>
+            <Text style={commonStyles.meniItem}>{menu.item}</Text>
+            <View style={commonStyles.priceContainer}>
+              <Text style={commonStyles.menuPrice}>${menu.price}</Text>
+              <Text style={commonStyles.discountedPrice}>
+                ${menu.discounted}
+              </Text>
             </View>
             <AddToCartButton
               id={id + "" + k}
@@ -84,18 +85,22 @@ const SearchComponent = ({}) => {
 
   return (
     <View>
-      <ImageBackground source={image} resizeMode="cover" style={styles.img}>
-        <View style={styles.container}>
+      <ImageBackground
+        source={image}
+        resizeMode="cover"
+        style={commonStyles.img}
+      >
+        <View style={commonStyles.searchContainer}>
           <TextInput
             placeholder="Search"
             value={searchText}
-            style={styles.searchTextbox}
+            style={commonStyles.searchTextbox}
             onChangeText={(text) => setSearchText(text)}
             keyboardType="default"
           />
         </View>
-        <View style={styles.container}>
-          <View style={styles.topBar}>
+        <View style={commonStyles.searchContainer}>
+          <View style={commonStyles.topBar}>
             <FlatList
               data={shopData}
               renderItem={({ item }) => (
@@ -222,5 +227,4 @@ const styles = StyleSheet.create({
   },
 });
 
-//make this component available to the app
 export default SearchComponent;

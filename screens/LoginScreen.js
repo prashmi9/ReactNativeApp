@@ -1,7 +1,6 @@
 //import liraries
 import React, { useState } from "react";
 import {
-  StyleSheet,
   KeyboardAvoidingView,
   TextInput,
   Platform,
@@ -9,8 +8,8 @@ import {
   SafeAreaView,
   Pressable,
 } from "react-native";
+import commonStyles from "../styles/style";
 
-// create a component
 const LoginScreen = () => {
   const [lastName, setLastName] = useState("Hello");
   const [password, setPassword] = useState("");
@@ -23,8 +22,11 @@ const LoginScreen = () => {
       {loggedIn && (
         <>
           <Text>Welcome {lastName}</Text>
-          <Pressable style={styles.button} onPress={() => setLoggedIn(false)}>
-            <Text style={styles.buttonText}>Log out</Text>
+          <Pressable
+            style={commonStyles.button}
+            onPress={() => setLoggedIn(false)}
+          >
+            <Text style={commonStyles.buttonText}>Log out</Text>
           </Pressable>
         </>
       )}
@@ -32,70 +34,30 @@ const LoginScreen = () => {
         <SafeAreaView keyboardDismissMode="on-drag">
           <Text>Login To Continue</Text>
           <TextInput
-            style={styles.textInput}
+            style={commonStyles.textInput}
             placeholder="Email"
             value={lastName}
             onChangeText={setLastName}
             clearButtonMode="always"
           ></TextInput>
           <TextInput
-            style={styles.textInput}
+            style={commonStyles.textInput}
             secureTextEntry={true}
             placeholder="Password"
             value={password}
             onChangeText={setPassword}
           ></TextInput>
           <Pressable
-            style={styles.button}
+            style={commonStyles.button}
             onPress={() => {
               setLoggedIn(!loggedIn);
             }}
           >
-            <Text style={styles.buttonText}>Login</Text>
+            <Text style={commonStyles.buttonText}>Login</Text>
           </Pressable>
         </SafeAreaView>
       )}
     </KeyboardAvoidingView>
   );
 };
-
-// define your styles
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#2c3e50",
-  },
-  textInput: {
-    height: 40,
-    borderColor: "gray",
-    borderWidth: 1,
-    width: 200,
-    margin: 20,
-  },
-  feedbackInput: {
-    height: 100,
-    borderColor: "gray",
-    borderWidth: 1,
-    width: 200,
-    margin: 20,
-  },
-  button: {
-    fontSize: 22,
-    padding: 10,
-    marginVertical: 8,
-    margin: 100,
-    backgroundColor: "#EE9972",
-    borderColor: "#EE9972",
-    borderWidth: 2,
-    borderRadius: 50,
-  },
-  buttonText: {
-    color: "white",
-    textAlign: "center",
-  },
-});
-
-//make this component available to the app
 export default LoginScreen;

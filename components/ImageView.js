@@ -1,6 +1,6 @@
 import React from "react";
 import { Image } from "react-native";
-
+import commonStyles from "../styles/style";
 const Images = {
   salad: require("../assets/images/salad.jpg"),
   winebottles: require("../assets/images/winebottles.jpeg"),

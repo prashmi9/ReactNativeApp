@@ -1,17 +1,9 @@
-//import liraries
-import React, { useEffect, useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  useColorScheme,
-  Pressable,
-} from "react-native";
-
+import React from "react";
+import { View, Text, useColorScheme, Pressable } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import Carousel from "react-native-snap-carousel";
 import ImageView from "../components/ImageView";
-
+import commonStyles from "../styles/style";
 const imageData = [
   {
     image: "winebottles",
@@ -27,22 +19,20 @@ const imageData = [
     price: "$24.50",
     discounted: "$18.00",
   },
-  // ... more items
 ];
 
-// create a component
 const HomeScreen = ({ navigation }) => {
   const colorShceme = useColorScheme();
 
   const renderImageItem = ({ item }) => (
-    <View style={styles.slide}>
-      <ImageView imageName={item.image} css={styles.img} />
-      <View style={styles.descSection}>
-        <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.description}>{item.description}</Text>
-        <View style={styles.priceContainer}>
-          <Text style={styles.price}>{item.discounted}</Text>
-          <Text style={styles.crossedPrice}>{item.price}</Text>
+    <View style={commonStyles.slide}>
+      <ImageView imageName={item.image} css={commonStyles.homeImg} />
+      <View style={commonStyles.descSection}>
+        <Text style={commonStyles.homeTitle}>{item.title}</Text>
+        <Text style={commonStyles.description}>{item.description}</Text>
+        <View style={commonStyles.homePriceContainer}>
+          <Text style={commonStyles.price}>{item.discounted}</Text>
+          <Text style={commonStyles.crossedPrice}>{item.price}</Text>
         </View>
       </View>
     </View>
@@ -51,30 +41,32 @@ const HomeScreen = ({ navigation }) => {
     <>
       <View
         style={[
-          styles.container,
+          commonStyles.homeContainer,
           colorShceme === "light"
             ? { backgroundColor: "#FFFFFF" }
             : { backgroundColor: "#CDDC39" },
         ]}
       >
-        <View style={styles.IconWrapper}>
+        <View style={commonStyles.IconWrapper}>
           <Icon
             name="notifications-circle"
             size={60}
-            style={styles.notificationBell}
+            style={commonStyles.notificationBell}
           />
         </View>
-        <View style={styles.sectionWrapper}>
-          <Text style={styles.HeaderText}>Hello, There</Text>
-          <Text style={styles.subheadingText}>What do you want to shop?</Text>
+        <View style={commonStyles.sectionWrapper}>
+          <Text style={commonStyles.HeaderText}>Hello, There</Text>
+          <Text style={commonStyles.subheadingText}>
+            What do you want to shop?
+          </Text>
         </View>
-        <View style={styles.OfferSectionWrapper}>
-          <Text style={styles.HeaderText}>Today's Offer</Text>
+        <View style={commonStyles.OfferSectionWrapper}>
+          <Text style={commonStyles.HeaderText}>Today's Offer</Text>
           <Pressable onPress={() => navigation.navigate("Promo")}>
-            <Text style={styles.SeeAllText}>See All</Text>
+            <Text style={commonStyles.SeeAllText}>See All</Text>
           </Pressable>
         </View>
-        <View style={styles.CarouselView}>
+        <View style={commonStyles.CarouselView}>
           <Carousel
             data={imageData}
             renderItem={renderImageItem}
@@ -87,103 +79,4 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 
-// define your styles
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "flex-start",
-    alignItems: "flex-start",
-    padding: 0,
-  },
-  sectionWrapper: {
-    margin: 0,
-    paddingLeft: 20,
-  },
-  IconWrapper: {
-    width: "100%",
-    justifyContent: "flex-end",
-    alignItems: "flex-end",
-    paddingRight: 20,
-  },
-  notificationBell: {
-    color: "#f35658",
-  },
-  OfferSectionWrapper: {
-    flexDirection: "row",
-    justifyContent: "start",
-    marginTop: 100,
-    paddingLeft: 20,
-  },
-  SeeAllText: {
-    color: "#f35658",
-    fontSize: 20,
-    marginTop: 10,
-    marginLeft: 100,
-    alignSelf: "flex-end",
-  },
-  HeaderText: {
-    color: "#333333",
-    fontSize: 34,
-    flexWrap: "wrap",
-    textAlign: "left",
-  },
-  subheadingText: {
-    fontSize: 24,
-    color: "grey",
-    textAlign: "left",
-    marginTop: 20,
-  },
-  CarouselView: {
-    height: 400,
-    paddingTop: 20,
-    backgroundColor: "#FFFFFF",
-  },
-  slide: {
-    justifyContent: "left",
-    alignItems: "center",
-  },
-  descSection: {
-    alignItems: "left",
-    position: "absolute",
-    bottom: 20,
-    backgroundColor: "#FFFFFF",
-    width: 280,
-    borderRadius: 10,
-    padding: 10,
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "#000000",
-  },
-  priceContainer: {
-    flexDirection: "row",
-    justifyContent: "start",
-    alignItems: "center",
-  },
-  description: {
-    fontSize: 20,
-    color: "#333333",
-  },
-  price: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "#000000",
-  },
-  crossedPrice: {
-    fontSize: 20,
-    textDecorationLine: "line-through",
-    color: "grey",
-    marginLeft: 10,
-  },
-  img: {
-    width: 350,
-    height: 380,
-    borderRadius: 20,
-    margin: 0,
-    padding: 0,
-  },
-});
-
-//make this component available to the app
 export default HomeScreen;
