@@ -20,14 +20,25 @@ import {
   emptyMenuItemsTable,
   showTableColumns,
 } from "../database";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchShopData } from "../store/menuitems/menuSlice";
 const Tab = createBottomTabNavigator();
 // create a component
 const RootComponent = () => {
   const cartItemsCount = useSelector((state) => state.cart.cartItemsCount);
+  const shopDispatch = useDispatch();
   const [shopData, setShopData] = useState(shopsData);
   const [menuData, setMenuData] = useState(Menuitems);
   const [insertedData, setInsertedData] = useState(false);
+  useEffect(() => {
+    fetch("http://10.0.2.2:5000/shopsdata")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        shopDispatch(fetchShopData(data));
+      });
+  }, []);
   useEffect(() => {
     (async () => {
       try {
@@ -85,7 +96,7 @@ const RootComponent = () => {
                 <>
                   <Ionicons name={iconName} size={35} color={color} />
                   {cartItemsCount > 0 && route.name === "Cart" && (
-                    <Text style={{ color: "red" }}>{cartItemsCount}</Text>
+                    <Text style={commonStyles.counter}>{cartItemsCount}</Text>
                   )}
                 </>
               );

@@ -1,6 +1,21 @@
 import { StyleSheet } from "react-native";
 
 const commonStyles = StyleSheet.create({
+  //RootComponent
+  counter: {
+    backgroundColor: "#eda345",
+    borderRadius: 50,
+    color: "#000000",
+    fontSize: 16,
+    fontWeight: "bold",
+    paddingLeft: 5,
+    paddingRight: 5,
+    position: "absolute",
+    top: 30,
+    right: 25,
+    width: 30,
+    textAlign: "center",
+  },
   nav: {
     height: 80,
     fontSize: 20,
@@ -96,7 +111,7 @@ const commonStyles = StyleSheet.create({
     textAlign: "left",
   },
   searchTextbox: {
-    height: 40,
+    height: 50,
     borderColor: "gray",
     borderWidth: 1,
     borderRadius: 10,
@@ -105,11 +120,12 @@ const commonStyles = StyleSheet.create({
   },
   searchContainer: {
     width: "95%",
-    marginTop: 20,
+    marginTop: 10,
   },
   topBar: {
     width: "100%",
     padding: 0,
+    marginTop: 0,
     marginBottom: 70,
   },
   img: {
