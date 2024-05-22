@@ -1,6 +1,6 @@
 //import liraries
-import React, { useEffect, useState, useContext } from "react";
-import { StyleSheet, Text } from "react-native";
+import React, { useEffect, useState } from "react";
+import { Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import WelcomeScreen from "./WelcomeScreen";
@@ -18,10 +18,10 @@ import {
   insertMenuItem,
   emptyShopsTable,
   emptyMenuItemsTable,
-  showTableColumns,
 } from "../database";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchShopData } from "../store/menuitems/menuSlice";
+import MenulistComponent from "./MenulistComponent";
 const Tab = createBottomTabNavigator();
 // create a component
 const RootComponent = () => {
@@ -109,7 +109,7 @@ const RootComponent = () => {
         >
           <Tab.Screen name="Home" component={HomeScreen} />
           <Tab.Screen name="Cart" component={CartComponent} />
-          <Tab.Screen name="Search" component={SearchComponent} />
+          <Tab.Screen name="Search" component={MenulistComponent} />
           <Tab.Screen name="Welcome" component={WelcomeScreen} />
           {/* <Tab.Screen name="Promo" component={PromoComponent} /> */}
         </Tab.Navigator>

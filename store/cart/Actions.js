@@ -3,8 +3,8 @@ export const addToCart = () => ({
   type: "ADD_TO_CART",
 });
 
-export const removeFromCart = () => ({
-  type: "REMOVE_FROM_CART",
+export const clearCart = () => ({
+  type: "CLEAR_CART",
 });
 export const addProductToCart = (product) => ({
   type: "PRODUCT_TO_CART",

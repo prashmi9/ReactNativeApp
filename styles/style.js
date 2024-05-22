@@ -375,5 +375,71 @@ const commonStyles = StyleSheet.create({
     padding: 10,
     margin: 10,
   },
+  //menulistComponent
+  shopDataContainer: {
+    backgroundColor: "#ffffff",
+    width: "95%",
+    marginTop: 10,
+    borderRadius: 10,
+    padding: 10,
+    marginBottom: 160,
+  },
+  menuListTopBar: {
+    width: "100%",
+    padding: 0,
+    marginTop: 0,
+    marginBottom: 80,
+  },
+  buttonCloseContainer: {
+    padding: 20,
+    width: "80%",
+    backgroundColor: "#e84d4f",
+    borderRadius: 10,
+    textAlign: "center",
+    alignSelf: "center",
+    marginTop: 20,
+  },
+  buttonCloseText: {
+    color: "#ffffff",
+    fontSize: 26,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  centeredView: {
+    width: "100%",
+    padding: 20,
+  },
+  modalView: {
+    marginTop: 125,
+    height: "80%",
+    padding: 30,
+    backgroundColor: "white",
+    borderRadius: 20,
+
+    borderWidth: 0,
+
+    // For iOS
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 5,
+      height: 2,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  modalText: {
+    marginTop: 80,
+    marginBottom: 20,
+    fontSize: 30,
+    color: "black",
+    textAlign: "center",
+    fontWeight: "bold",
+  },
+  modalNormalText: {
+    fontSize: 20,
+    color: "black",
+    textAlign: "center",
+  },
 });
 export default commonStyles;

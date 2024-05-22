@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { shopData } from "./menuActions";
 const initialState = {
-  menuItems: [],
   shopdata: [],
 };
 export const menuSlice = createSlice({
@@ -9,13 +8,13 @@ export const menuSlice = createSlice({
   initialState,
   reducers: {
     fetchShopData: (state, action) => {
-      console.log("shopData", action.payload);
+      // console.log("shopData", action.payload);
       state.shopdata = action.payload;
     },
   },
 });
 
 export const { fetchShopData } = menuSlice.actions;
-export const selectMenuItems = (state) => state.menu.menuItems;
+export const selectShopData = (state) => state.menu.shopdata;
 
 export default menuSlice.reducer;

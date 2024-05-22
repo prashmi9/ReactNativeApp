@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { useDispatch } from "react-redux";
-import {
-  addToCart,
-  removeFromCart,
-  addProductToCart,
-  removeProduct,
-} from "../store/cart/cartSlice";
+import { addProductToCart, removeProduct } from "../store/cart/cartSlice";
 import commonStyles from "../styles/style";
 
 const AddToCartButton = (menuitem) => {
@@ -20,12 +15,10 @@ const AddToCartButton = (menuitem) => {
   };
   const addQuantity = () => {
     increment();
-    dispatch(addToCart());
     dispatch(addProductToCart({ product: menuitem }));
   };
   const removeQuantity = () => {
     decrement();
-    dispatch(removeFromCart());
     dispatch(removeProduct({ product: menuitem }));
   };
   return (
