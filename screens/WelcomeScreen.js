@@ -5,12 +5,11 @@ import commonStyles from "../styles/style";
 const WelcomeScreen = ({ navigation }) => {
   return (
     <View style={commonStyles.container}>
-      <Text>WelcomeScreen</Text>
       <Pressable
-        style={commonStyles.button}
-        onPress={() => navigation.goBack()}
+        style={commonStyles.buttonCloseContainer}
+        onPress={() => navigation.navigate("Login")}
       >
-        <Text style={commonStyles.buttonText}>Go Back</Text>
+        <Text style={commonStyles.buttonCloseText}>Login</Text>
       </Pressable>
     </View>
   );
