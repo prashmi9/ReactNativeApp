@@ -1,4 +1,15 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { createStore, applyMiddleware, combineReducers } from "redux";
 import cartReducer from "./cartSlice";
-// Create store
-export default store = configureStore({ reducer: { cart: cartReducer } });
+import { composeWithDevTools } from "@redux-devtools/extension";
+import menuReducer from "../menuitems/menuSlice";
+import logger from "redux-logger";
+
+const rootReducer = combineReducers({
+  cart: cartReducer,
+  menu: menuReducer,
+});
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(logger))
+);
+export default store;

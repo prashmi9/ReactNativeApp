@@ -5,18 +5,6 @@
       "shopid": "1",
       "shopaddress": "Stanmore, London, HA7",
       "reviews": "4.5"
-    },
-    {
-      "shopname": "The Corner Shop",
-      "shopid": "2",
-      "shopaddress": "Bagawanta bhari, Ngasem",
-      "reviews": "3.5"
-    },
-    {
-      "shopname": "The Corner Shop",
-      "shopid": "3",
-      "shopaddress": "Bagawanta Road, Pune",
-      "reviews": "5.0"
     }
   ]
 }

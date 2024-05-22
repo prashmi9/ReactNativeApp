@@ -1,4 +1,8 @@
 {
+  "shopname": "The Corner Shop",
+  "shopid": "1",
+  "shopaddress": "Stanmore, London, HA7",
+  "reviews": "4.5",
   "menuitems": [
     {
       "id": 101,

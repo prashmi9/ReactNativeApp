@@ -1,8 +1,9 @@
 //import liraries
-import React, { useEffect, useState, useContext } from "react";
-import { StyleSheet, Text } from "react-native";
+import React, { Suspense, useEffect, useState } from "react";
+import { Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
 import WelcomeScreen from "./WelcomeScreen";
 import HomeScreen from "./HomeScreen";
 import { Ionicons } from "@expo/vector-icons";
@@ -18,16 +19,46 @@ import {
   insertMenuItem,
   emptyShopsTable,
   emptyMenuItemsTable,
-  showTableColumns,
 } from "../database";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchShopData } from "../store/menuitems/menuSlice";
+import MenulistComponent from "./MenulistComponent";
+// import UserProfile from "./UserProfile";
+// import UserScreen from "./UserScreen";
+const UserScreen = React.lazy(() => import("./UserScreen"));
+const UserProfile = React.lazy(() => import("./UserProfile"));
+const LoginScreen = React.lazy(() => import("./LoginScreen"));
 const Tab = createBottomTabNavigator();
+
+const WelcomeStack = createStackNavigator();
+
+const WelcomeStackNavigator = () => {
+  return (
+    <WelcomeStack.Navigator screenOptions={{ headerShown: false }}>
+      <WelcomeStack.Screen name="UserHome" component={WelcomeScreen} />
+      <WelcomeStack.Screen name="User" component={UserScreen} />
+      <WelcomeStack.Screen name="Login" component={LoginScreen} />
+      <WelcomeStack.Screen name="Profile" component={UserProfile} />
+      {/* <WelcomeStack.Screen name="OrderHistory" component={OrderHistoryScreen} /> */}
+    </WelcomeStack.Navigator>
+  );
+};
 // create a component
 const RootComponent = () => {
   const cartItemsCount = useSelector((state) => state.cart.cartItemsCount);
+  const shopDispatch = useDispatch();
   const [shopData, setShopData] = useState(shopsData);
   const [menuData, setMenuData] = useState(Menuitems);
   const [insertedData, setInsertedData] = useState(false);
+  useEffect(() => {
+    fetch("http://10.0.2.2:5000/shopsdata")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        shopDispatch(fetchShopData(data));
+      });
+  }, []);
   useEffect(() => {
     (async () => {
       try {
@@ -85,7 +116,7 @@ const RootComponent = () => {
                 <>
                   <Ionicons name={iconName} size={35} color={color} />
                   {cartItemsCount > 0 && route.name === "Cart" && (
-                    <Text style={{ color: "red" }}>{cartItemsCount}</Text>
+                    <Text style={commonStyles.counter}>{cartItemsCount}</Text>
                   )}
                 </>
               );
@@ -98,9 +129,8 @@ const RootComponent = () => {
         >
           <Tab.Screen name="Home" component={HomeScreen} />
           <Tab.Screen name="Cart" component={CartComponent} />
-          <Tab.Screen name="Search" component={SearchComponent} />
-          <Tab.Screen name="Welcome" component={WelcomeScreen} />
-          {/* <Tab.Screen name="Promo" component={PromoComponent} /> */}
+          <Tab.Screen name="Search" component={MenulistComponent} />
+          <Tab.Screen name="Welcome" component={WelcomeStackNavigator} />
         </Tab.Navigator>
       </NavigationContainer>
     </>
